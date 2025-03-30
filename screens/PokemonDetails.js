@@ -11,19 +11,12 @@ export default function PokemonDetails({ navigation }) {
 
     const route = useRoute()
     const pokemonData = route.params?.pokemonData
-    const [loadingPokemon, setLoadingPokemon] = useState(true)
+   
 
-    useEffect(() => {
-        if (pokemonData) {
-            setLoadingPokemon(false);
-        } else {
-            setLoadingPokemon(true);
-        }
-    }, [pokemonData]);
-
+ 
     const handleClearSelection = () => {
 
-        setLoadingPokemon(true)
+        navigation.navigate('Pokemon Details', {pokemonData: undefined})
 
     }
 
@@ -32,7 +25,7 @@ export default function PokemonDetails({ navigation }) {
         <View style={styles.container}>
 
 
-            {loadingPokemon ?
+            {pokemonData == undefined ?
 
 
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
